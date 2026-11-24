@@ -55,6 +55,8 @@ h2::before{content:"";display:block;width:32px;height:3px;background:var(--accen
 .case dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:4px 16px}
 .case dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--faint);padding-top:5px;text-transform:uppercase}
 .case dd{margin:0}
+.case dd.method{grid-column:2;font-size:13px;color:var(--faint);line-height:1.5}
+@media(max-width:600px){.case dd.method{grid-column:1}}
 .case dd.res{font-weight:600;color:var(--accent)}
 .case .go{grid-column:2;font-size:15px;margin-top:4px}
 .list{list-style:none;padding:0;margin:0;display:grid;gap:16px}
@@ -85,6 +87,13 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   .case dt{padding-top:8px}
   .case .go{grid-column:1}
 }
+/*m2*/
+@media(max-width:600px){
+  nav .wrap{gap:12px;padding:0 16px;overflow-x:visible;flex-wrap:nowrap}
+  nav a{font-size:14px}
+  main>header .lead{font-size:18px}
+  main>header{padding-top:32px}
+}
 </style>
 </head>
 <body>
@@ -92,7 +101,6 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   <a class="name" href="/">Ina Arechowska</a>
   <a href="/#how">How it works</a>
   <a href="/#cases">Case studies</a>
-  <a href="/writing/">Writing</a>
   <a href="/#about">About</a>
   <a href="/#contact">Contact</a>
 </div></nav>
@@ -173,6 +181,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
     </div>
     <dl>
       <dt>Problem</dt><dd>Many banks, many Word copies; every change repeated in each.</dd>
+      <dt>Result</dt><dd class="res">A working pilot: bilingual help site, PDF and in-app help from one source. 19 features compared across three tools on real documentation.</dd>
       
       <dd class="go"><a href="https://arechowska.github.io/docs-as-code-case/">Read the case →</a></dd>
     </dl>
@@ -186,7 +195,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
     </div>
     <dl>
       <dt>Problem</dt><dd>Users who speak a low-resource language can't find answers and go to support.</dd>
-      <dt>Result</dt><dd class="res">About 70% full answers on the first try, 80% after one follow-up.</dd>
+      <dt>Result</dt><dd class="res">About 70% full answers on the first try, 80% after one follow-up.</dd><dd class="method">Measured on a closed set of 50 questions with reference answers written in advance, including real support tickets. Two raters scored answers blind; a full answer is one the user can act on without further searching and without a wrong step.</dd>
       <dd class="go"><a href="https://arechowska.github.io/ai-help-case/">Read the case →</a></dd>
     </dl>
   </article>
@@ -199,18 +208,11 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
     </div>
     <dl>
       <dt>Problem</dt><dd>Structured documents are put together by hand and checked by eye.</dd>
+      <dt>Did</dt><dd>A tool that builds documents from templates and your sources, then checks them.</dd>
       
       <dd class="go"><a href="https://arechowska.github.io/formatta/">Read the case →</a></dd>
     </dl>
   </article>
-</div></section>
-
-<section id="writing"><div class="wrap">
-  <h2>Writing</h2>
-  <ul class="list">
-    <li class="soon"><span class="when">soon</span><span class="t">Our questions vs real ones</span><span class="d">What happened when we tested an AI documentation assistant on real support tickets.</span></li>
-  </ul>
-  <p class="more"><a href="/writing/">All notes →</a></p>
 </div></section>
 
 <section id="about"><div class="wrap">
