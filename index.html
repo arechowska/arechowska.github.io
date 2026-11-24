@@ -41,6 +41,8 @@ h2::before{content:"";display:block;width:32px;height:3px;background:var(--accen
 .step h3{font-size:18px;margin:0 0 6px}
 .step h3 i{font-style:normal;color:var(--accent);margin-right:8px}
 .step p{margin:0 0 6px;color:var(--muted)}
+.step .breaks{font-size:14px;color:var(--muted);margin:8px 0 8px;padding-left:12px;border-left:2px solid var(--accent)}
+.step .breaks b{color:var(--text);font-weight:600}
 .step .proof{font-size:14px}
 .case{display:grid;gap:6px 32px;padding:22px 0}
 .case + .case{margin-top:6px}
@@ -144,10 +146,10 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   <h2>How it works</h2>
   <p class="intro">Four parts. Each one solves a problem on its own, and together they close the loop.</p>
   <div class="steps">
-    <div class="step"><h3><i>1</i>One source instead of copies</h3><p>Each bank used to get its own copy, and every change was repeated in every copy. Now shared text is written once; each bank's differences live in a layer that says where they apply.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
-    <div class="step"><h3><i>2</i>Everything is built from it</h3><p>The website, the PDF and the help that opens from the application screen come from the same source, with automatic checks instead of manual review.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
-    <div class="step"><h3><i>3</i>AI answers from the same source</h3><p>An assistant answers users in their own language, with a link to the section it used, and only from their bank's documents.</p><a class="proof" href="https://arechowska.github.io/ai-help-case/">AI Help →</a></div>
-    <div class="step"><h3><i>4</i>Real questions show what is missing</h3><p>We test the assistant on real support tickets, not on questions we wrote ourselves. Where it fails, the documentation has a gap, and the fix goes back into the source.</p><a class="proof" href="https://arechowska.github.io/ai-help-case/">AI Help →</a></div>
+    <div class="step"><h3><i>1</i>One source instead of copies</h3><p>Each bank used to get its own copy, and every change was repeated in every copy. Now shared text is written once; each bank's differences live in a layer that says where they apply.</p><p class="breaks"><b>Where it usually breaks:</b> one client's text slips into the shared part, and another bank sees it in search or navigation.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
+    <div class="step"><h3><i>2</i>Everything is built from it</h3><p>The website, the PDF and the help that opens from the application screen come from the same source, with automatic checks instead of manual review.</p><p class="breaks"><b>Where it usually breaks:</b> checks catch broken links and style, not meaning. A translated guide can pass every check and still say the wrong thing.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
+    <div class="step"><h3><i>3</i>AI answers from the same source</h3><p>An assistant answers users in their own language, with a link to the section it used, and only from their bank's documents.</p><p class="breaks"><b>Where it usually breaks:</b> search, not the model. In the user's own language the assistant finds the wrong section far more often than in the source language.</p><a class="proof" href="https://arechowska.github.io/ai-help-case/">AI Help →</a></div>
+    <div class="step"><h3><i>4</i>Real questions show what is missing</h3><p>We test the assistant on real support tickets, not on questions we wrote ourselves. Where it fails, the documentation has a gap, and the fix goes back into the source.</p><p class="breaks"><b>Where it usually breaks:</b> the team's own test questions look great, real tickets score much lower, and a single test run is mostly noise.</p><a class="proof" href="https://arechowska.github.io/ai-help-case/">AI Help →</a></div>
   </div>
 </div></section>
 
@@ -227,7 +229,9 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
 </div></section>
 
 <section id="contact"><div class="wrap">
-  <h2>Contact</h2>
+  <h2>Working on something similar?</h2>
+  <p class="intro">If you're moving documentation for many clients into one source, or testing an AI assistant on your own documentation, I'd be glad to compare notes.</p>
+  <p class="intro">I also take on small consulting projects in documentation architecture, docs-as-code and AI-ready documentation.</p>
   <p class="contact"><a href="https://www.linkedin.com/in/arechowska/">LinkedIn</a><a href="https://github.com/arechowska">GitHub</a><a href="mailto:arechowska@gmail.com">arechowska@gmail.com</a></p>
 </div></section>
 
