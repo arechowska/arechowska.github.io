@@ -64,9 +64,10 @@ h2::before{content:"";display:block;width:32px;height:3px;background:var(--accen
 .list .when{font-size:13px;color:var(--faint);margin-right:10px}
 .list .soon .t{color:var(--muted)}
 .more{margin-top:20px;font-size:15px}
-.aboutgrid{display:grid;gap:20px 32px;align-items:start}
-@media(min-width:640px){.aboutgrid{grid-template-columns:160px 1fr}}
-.photo{width:160px;height:160px;border-radius:12px;object-fit:cover;display:block}
+.aboutgrid{display:grid;gap:20px 32px;align-items:stretch}
+@media(min-width:640px){.aboutgrid{grid-template-columns:200px 1fr}.photo{width:200px;height:100%;min-height:200px}}
+.photo{width:200px;height:200px;border-radius:12px;object-fit:cover;object-position:50% 25%;display:block}
+.about p:last-child{margin-bottom:0}
 .about p{max-width:680px;margin:0 0 12px}
 .contact{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:18px}
 footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
@@ -209,7 +210,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
 <section id="about"><div class="wrap">
   <h2>About</h2>
   <div class="aboutgrid">
-    <img class="photo" src="/photo.jpg" alt="Ina Arechowska" width="160" height="160">
+    <img class="photo" src="/photo.jpg" alt="Ina Arechowska" width="200" height="200">
   <div class="about">
     <p>I'm Ina Arechowska, a documentation architect and DocOps engineer. I work on documentation for enterprise banking software: how it is structured, built and delivered to many client banks, and how an AI assistant can answer from it.</p>
     <p>I have a degree in linguistics and computational linguistics, so I look at documentation as data that language models read.</p>
