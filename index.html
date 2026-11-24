@@ -8,13 +8,13 @@
 <style>
 :root{
   --bg:#ffffff; --text:#1d1d1f; --muted:#5f6368; --faint:#8a9097; --band:#f4f6f5;
-  --accent:#0b5c58; --accent-soft:#e3f1ef; --tint:#e9eeec;
+  --accent:#0b5c58; --accent-soft:#e3f1ef; --ochre:#9c4f0a; --ochre-soft:#f8f4ee; --ochre-bar:#c98a45; --tint:#e9eeec;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root{
   --bg:#121316; --text:#ececee; --muted:#a3a7ae; --faint:#7a8088; --band:#191c1e;
-  --accent:#5fcabd; --accent-soft:#15302d; --tint:#22272a;}}
+  --accent:#5fcabd; --accent-soft:#15302d; --ochre:#e8ad62; --ochre-soft:#2a2117; --ochre-bar:#d98a2b; --tint:#22272a;}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 var(--sans)}
@@ -41,8 +41,8 @@ h2::before{content:"";display:block;width:32px;height:3px;background:var(--accen
 .step h3{font-size:18px;margin:0 0 6px}
 .step h3 i{font-style:normal;color:var(--accent);margin-right:8px}
 .step p{margin:0 0 6px;color:var(--muted)}
-.step .breaks{font-size:14px;color:var(--muted);margin:8px 0 8px;padding-left:12px;border-left:2px solid var(--accent)}
-.step .breaks b{color:var(--text);font-weight:600}
+.step .breaks{font-size:14px;color:var(--muted);margin:10px 0 10px;padding:10px 14px;background:var(--ochre-soft);border-left:3px solid var(--ochre-bar);border-radius:0 6px 6px 0}
+.step .breaks b{color:var(--ochre);font-weight:600}
 .step .proof{font-size:14px}
 .case{display:grid;gap:6px 32px;padding:22px 0}
 .case + .case{margin-top:6px}
@@ -68,6 +68,10 @@ h2::before{content:"";display:block;width:32px;height:3px;background:var(--accen
 @media(min-width:640px){.aboutgrid{grid-template-columns:200px 1fr}.photo{width:200px;height:100%;min-height:200px}}
 .photo{width:200px;height:200px;border-radius:12px;object-fit:cover;object-position:50% 25%;display:block}
 .about p:last-child{margin-bottom:0}
+.voice{font-size:19px;line-height:1.5;color:var(--text);font-style:italic;margin:0 0 24px;max-width:640px}
+.quotes{display:grid;gap:16px 40px;margin-top:32px}
+@media(min-width:760px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{margin:0;font-size:16px;line-height:1.55;font-style:italic;color:var(--text);padding-left:16px;border-left:3px solid var(--accent)}
 .about p{max-width:680px;margin:0 0 12px}
 .contact{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:18px}
 footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
@@ -102,6 +106,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   <div class="cycle" role="img" aria-label="One source with shared text and bank layers builds a website, PDF, in-app help and an AI assistant; real user questions reveal gaps, which go back into the source">
     <svg viewBox="0 10 440 290" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13">
       <defs>
+        <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ochre-bar)"/></marker>
         <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
       </defs>
       <g fill="var(--tint)">
@@ -130,14 +135,14 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
       <g stroke="var(--accent)" stroke-width="1.5" fill="none" marker-end="url(#a)">
         <path d="M335 182 L335 236"/>
         <path d="M296 270 L200 270"/>
-        <path d="M105 252 L105 150" stroke-dasharray="4 4"/>
+        <path d="M105 252 L105 150" stroke-dasharray="4 4" stroke="var(--ochre-bar)" marker-end="url(#o)"/>
       </g>
       <g fill="var(--text)">
         <text x="302" y="264">real user</text>
         <text x="302" y="282">questions</text>
-        <text x="64" y="275">gaps found</text>
+        <text x="64" y="275" fill="var(--ochre)" font-weight="600">gaps found</text>
       </g>
-      <g fill="var(--faint)">
+      <g fill="var(--ochre)">
         <text x="113" y="206">fixed in</text>
         <text x="113" y="222">the source</text>
       </g>
@@ -148,6 +153,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
 
 <section class="band" id="how"><div class="wrap">
   <h2>How it works</h2>
+  <p class="voice">Most documentation answers “what is this field”. People ask “what do I do next”.</p>
   <div class="steps">
     <div class="step"><h3><i>1</i>One source instead of copies</h3><p>Shared text is written once; each bank's differences live in a layer that says where they apply.</p><p class="breaks"><b>Where it usually breaks:</b> one client's text slips into the shared part, and another bank sees it in search or navigation.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
     <div class="step"><h3><i>2</i>Everything is built from it</h3><p>The website, the PDF and the in-app help come from the same source, checked automatically.</p><p class="breaks"><b>Where it usually breaks:</b> checks catch broken links and style, not meaning. A translated guide can pass every check and still say the wrong thing.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
@@ -216,6 +222,10 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
     <p>I have a degree in linguistics and computational linguistics, so I look at documentation as data that language models read.</p>
     <p>18 years in documentation. Based in Poland.</p>
   </div>
+  </div>
+<div class="quotes">
+  <blockquote class="quote">I studied how language works, and now I watch how machines misread it. That’s where the interesting problems are.</blockquote>
+  <blockquote class="quote">I like work that can be measured. If an assistant is “pretty good”, I want to know on which questions it fails.</blockquote>
   </div>
 </div></section>
 
