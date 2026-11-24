@@ -31,9 +31,10 @@ h1{font-size:46px;line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
 .hero p{margin:0 0 14px;max-width:520px}
 .hero .who{color:var(--muted);font-size:15px;margin-top:22px}
 .cycle svg{width:100%;height:auto;display:block}
-section{padding:56px 0;scroll-margin-top:8px}
+section{padding:48px 0;scroll-margin-top:8px}
 section.band{background:var(--band)}
 h2{font-size:28px;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
+h2::before{content:"";display:block;width:32px;height:3px;background:var(--accent);border-radius:2px;margin:0 0 16px}
 .intro{color:var(--muted);margin:0 0 28px;max-width:620px}
 .steps{display:grid;gap:28px 40px}
 @media(min-width:760px){.steps{grid-template-columns:1fr 1fr}}
@@ -61,6 +62,7 @@ h2{font-size:28px;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
 .list .when{font-size:13px;color:var(--faint);margin-right:10px}
 .list .soon .t{color:var(--muted)}
 .more{margin-top:20px;font-size:15px}
+.about p{max-width:680px;margin:0 0 12px}
 .contact{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:18px}
 footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
 @media(max-width:600px){
@@ -81,6 +83,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   <a href="/#how">How it works</a>
   <a href="/#cases">Case studies</a>
   <a href="/writing/">Writing</a>
+  <a href="/#about">About</a>
   <a href="/#contact">Contact</a>
 </div></nav>
 <div class="wrap">
@@ -89,7 +92,6 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
     <h1>Documentation that people and AI can rely on</h1>
     <p>Banks that use the same software get one set of documentation. Shared text is written once; each bank's differences live in a separate layer.</p>
     <p>The same source builds the website, the PDF and the help inside the app, and an AI assistant answers from it. When the assistant can't answer a real user question, that shows what the documentation is missing.</p>
-    <p class="who">Ina Arechowska, documentation architect and DocOps engineer in enterprise banking software. Linguistics and computational linguistics by training. Based in Poland.</p>
   </div>
   <div class="cycle" role="img" aria-label="One source with shared text and bank layers builds a website, PDF, in-app help and an AI assistant; real user questions reveal gaps, which go back into the source">
     <svg viewBox="0 10 440 290" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13">
@@ -196,13 +198,22 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   </article>
 </div></section>
 
-<section class="band" id="writing"><div class="wrap">
+<section id="writing"><div class="wrap">
   <h2>Writing</h2>
   <p class="intro">Research notes from this work.</p>
   <ul class="list">
     <li class="soon"><span class="when">soon</span><span class="t">Our questions vs real ones</span><span class="d">What happened when we tested an AI documentation assistant on real support tickets.</span></li>
   </ul>
   <p class="more"><a href="/writing/">All notes →</a></p>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2>About</h2>
+  <div class="about">
+    <p>I'm Ina Arechowska, a documentation architect and DocOps engineer. I work on documentation for enterprise banking software: how it is structured, built and delivered to many client banks, and how an AI assistant can answer from it.</p>
+    <p>I have a degree in linguistics and computational linguistics, so I look at documentation as data that language models read.</p>
+    <p>18 years in documentation. Based in Poland.</p>
+  </div>
 </div></section>
 
 <section id="tools"><div class="wrap">
@@ -215,7 +226,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   </ul>
 </div></section>
 
-<section class="band" id="contact"><div class="wrap">
+<section id="contact"><div class="wrap">
   <h2>Contact</h2>
   <p class="contact"><a href="https://www.linkedin.com/in/arechowska/">LinkedIn</a><a href="https://github.com/arechowska">GitHub</a><a href="mailto:arechowska@gmail.com">arechowska@gmail.com</a></p>
 </div></section>

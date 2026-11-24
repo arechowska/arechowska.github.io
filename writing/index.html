@@ -31,9 +31,10 @@ h1{font-size:46px;line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
 .hero p{margin:0 0 14px;max-width:520px}
 .hero .who{color:var(--muted);font-size:15px;margin-top:22px}
 .cycle svg{width:100%;height:auto;display:block}
-section{padding:56px 0;scroll-margin-top:8px}
+section{padding:48px 0;scroll-margin-top:8px}
 section.band{background:var(--band)}
 h2{font-size:28px;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
+h2::before{content:"";display:block;width:32px;height:3px;background:var(--accent);border-radius:2px;margin:0 0 16px}
 .intro{color:var(--muted);margin:0 0 28px;max-width:620px}
 .steps{display:grid;gap:28px 40px}
 @media(min-width:760px){.steps{grid-template-columns:1fr 1fr}}
@@ -81,6 +82,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   <a href="/#how">How it works</a>
   <a href="/#cases">Case studies</a>
   <a href="/writing/" aria-current="page">Writing</a>
+  <a href="/#about">About</a>
   <a href="/#contact">Contact</a>
 </div></nav>
 <div class="wrap">
@@ -89,7 +91,7 @@ footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
   <p>Research notes from my work: documentation as a source for AI, docs-as-code, and testing assistants on real questions.</p>
 </header>
 </div>
-<section class="band"><div class="wrap">
+<section><div class="wrap">
   <ul class="list">
     <li class="soon"><span class="when">soon</span><span class="t">Our questions vs real ones</span><span class="d">What happened when we tested an AI documentation assistant on real support tickets.</span></li>
   </ul>
