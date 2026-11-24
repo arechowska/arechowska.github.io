@@ -3,162 +3,223 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ina Arechowska — Documentation architecture, DocOps, AI-ready documentation</title>
-<meta name="description" content="Documentation lead and knowledge architect: one versioned source for many clients, documentation pipelines, and documentation AI assistants can answer from.">
+<title>Ina Arechowska</title>
+<meta name="description" content="Ina Arechowska, documentation lead: one documentation source for many banks, built into site, PDF, in-app help and an AI assistant.">
 <style>
 :root{
-  --bg:#ffffff; --surface:#f6f7f9; --text:#1d1d1f; --muted:#5f6368; --line:#e3e6eb;
-  --accent:#0b5c58; --accent-soft:#e3f1ef; --ok:#1f7a4d; --warn:#9a5b00;
+  --bg:#ffffff; --text:#1d1d1f; --muted:#5f6368; --faint:#8a9097; --band:#f4f6f5;
+  --accent:#0b5c58; --accent-soft:#e3f1ef; --tint:#e9eeec;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121316; --surface:#1b1d21; --text:#ececee; --muted:#a3a7ae; --line:#2c2f35;
-    --accent:#5fcabd; --accent-soft:#15302d; --ok:#5fc796; --warn:#e0a54b;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121316; --surface:#1b1d21; --text:#ececee; --muted:#a3a7ae; --line:#2c2f35;
-  --accent:#5fcabd; --accent-soft:#15302d; --ok:#5fc796; --warn:#e0a54b;
-}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#121316; --text:#ececee; --muted:#a3a7ae; --faint:#7a8088; --band:#191c1e;
+  --accent:#5fcabd; --accent-soft:#15302d; --tint:#22272a;}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);
-  font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-main{max-width:860px;margin:0 auto;padding:56px 16px 80px}
-h1{font-size:44px;line-height:1.1;letter-spacing:-.02em;margin:0 0 12px}
-h2{font-size:26px;letter-spacing:-.01em;margin:64px 0 16px}
-h3{font-size:18px;margin:0 0 6px}
-p{margin:0 0 14px}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 var(--sans)}
 a{color:var(--accent)}
-.lead{font-size:21px;color:var(--muted);margin-bottom:20px}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0}
-.chip{font-size:14px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--surface)}
-.grid{display:grid;gap:14px}
-@media(min-width:700px){.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr 1fr}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.card p{margin:0;color:var(--muted);font-size:16px}
-.decision{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:14px}
-.decision dl{display:grid;grid-template-columns:96px 1fr;gap:6px 14px;margin:10px 0 0;font-size:16px}
-.decision dt{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;padding-top:3px}
-.decision dd{margin:0}
-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
-tr:last-child td{border-bottom:0}
-.scroll{overflow-x:auto}
-ul.clean{padding-left:20px;margin:0}
-ul.clean li{margin:4px 0}
-.note{border-left:3px solid var(--warn);padding:4px 0 4px 16px;color:var(--text);margin:18px 0}
-figure{margin:18px 0}
-figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:12px;display:block}
-figcaption{font-size:14px;color:var(--muted);margin-top:8px}
-.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line)}
-.timeline li{position:relative;padding:0 0 16px 22px}
-.timeline li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
-.timeline b{display:inline-block;min-width:110px}
-.diagram{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
-.diagram svg{width:100%;height:auto;display:block}
-.placeholder{border:1px dashed var(--line);border-radius:14px;padding:28px;text-align:center;color:var(--muted);background:var(--surface)}
-footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-code{font-family:var(--mono);font-size:.9em;background:var(--accent-soft);padding:1px 5px;border-radius:5px}
-</style>
-<style>
-.cards a.card{display:block;text-decoration:none;color:inherit;transition:border-color .15s}
-.cards a.card:hover{border-color:var(--accent)}
-.cards a.card h3{color:var(--accent)}
-.topnav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-.topnav div{max-width:860px;margin:0 auto;padding:12px 16px;display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center}
-.topnav .name{font-weight:600;color:var(--text);text-decoration:none;margin-right:auto}
-.topnav a{color:var(--muted);text-decoration:none;font-size:15px}
-.topnav a:hover,.topnav a[aria-current]{color:var(--accent)}
-section{scroll-margin-top:64px}
-main{padding-top:88px}
-.hero{position:relative;padding:44px 40px 40px;margin:0 0 8px;border:1px solid var(--line);border-radius:22px;
-  background:var(--surface)}
-.hero h1{font-size:50px;max-width:680px}
-.hero .lead{max-width:640px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0 0}
-.stat{border-top:1px solid var(--line);padding-top:12px}
-.stat b{display:block;font-size:30px;letter-spacing:-.02em;color:var(--accent)}
-.stat span{font-size:14px;color:var(--muted)}
-.card .tag{display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px;margin-bottom:10px}
-.card .result{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:14px;color:var(--text)}
-.cards a.card{padding:22px 22px 20px}
-@media(max-width:700px){.hero{padding:28px 20px}.hero h1{font-size:36px}.stats{grid-template-columns:1fr}}
-.kicker{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}
-.more{font-size:15px;color:var(--muted);margin-top:14px}
-.contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.contact a{font-size:15px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+nav{padding:22px 0}
+nav .wrap{display:flex;align-items:baseline;gap:24px}
+nav .name{font-weight:600;color:var(--text);text-decoration:none;margin-right:auto}
+nav a{color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover,nav a[aria-current]{color:var(--accent)}
+.hero{display:grid;gap:40px;padding:56px 0 64px;align-items:center}
+@media(min-width:860px){.hero{grid-template-columns:1.05fr 1fr}}
+h1{font-size:46px;line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
+.hero p{margin:0 0 14px;max-width:520px}
+.hero .who{color:var(--muted);font-size:15px;margin-top:22px}
+.cycle svg{width:100%;height:auto;display:block}
+section{padding:56px 0;scroll-margin-top:8px}
+section.band{background:var(--band)}
+h2{font-size:28px;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
+.intro{color:var(--muted);margin:0 0 28px;max-width:620px}
+.steps{display:grid;gap:28px 40px}
+@media(min-width:760px){.steps{grid-template-columns:1fr 1fr}}
+.step h3{font-size:18px;margin:0 0 6px}
+.step h3 i{font-style:normal;color:var(--accent);margin-right:8px}
+.step p{margin:0 0 6px;color:var(--muted)}
+.step .proof{font-size:14px}
+.case{display:grid;gap:6px 32px;padding:22px 0}
+.case + .case{margin-top:6px}
+@media(min-width:760px){.case{grid-template-columns:240px 1fr}}
+.case h3{font-size:20px;margin:0;line-height:1.25}
+.case h3 a{color:var(--text);text-decoration:none}
+.case h3 a:hover{color:var(--accent)}
+.case .stack{font-size:13px;color:var(--faint);margin-top:4px}
+.case .shows{font-size:13px;color:var(--accent);margin-top:8px}
+.case dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:4px 16px}
+.case dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--faint);padding-top:5px;text-transform:uppercase}
+.case dd{margin:0}
+.case dd.res{font-weight:600;color:var(--accent)}
+.case .go{grid-column:2;font-size:15px;margin-top:4px}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.list a.t{font-weight:600;color:var(--text);text-decoration:none}
+.list a.t:hover{color:var(--accent)}
+.list .d{display:block;color:var(--muted);font-size:15px}
+.list .when{font-size:13px;color:var(--faint);margin-right:10px}
+.list .soon .t{color:var(--muted)}
+.more{margin-top:20px;font-size:15px}
+.contact{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:18px}
+footer{padding:28px 0 40px;color:var(--faint);font-size:14px}
+@media(max-width:600px){
+  nav .wrap{gap:18px;overflow-x:auto}
+  nav .name{display:none}
+  nav a{white-space:nowrap}
+  .hero{padding-top:28px}
+  h1{font-size:34px}
+  .case dl{grid-template-columns:1fr;gap:0}
+  .case dt{padding-top:8px}
+  .case .go{grid-column:1}
+}
 </style>
 </head>
 <body>
-<nav class="topnav"><div>
+<nav><div class="wrap">
   <a class="name" href="/">Ina Arechowska</a>
-  <a href="/#work">Work</a>
+  <a href="/#how">How it works</a>
   <a href="/#cases">Case studies</a>
   <a href="/writing/">Writing</a>
-  <a href="/#tools">Tools</a>
   <a href="/#contact">Contact</a>
 </div></nav>
-<main>
-
+<div class="wrap">
 <header class="hero">
-  <p class="kicker">Documentation architecture · DocOps · AI-ready documentation</p>
-  <h1>Documentation that people — and AI — can rely on</h1>
-  <p class="lead">One versioned source for many clients. Checks instead of manual review. Quality measured on real user questions, not on convenient ones.</p>
-  <p>Ina Arechowska — documentation lead in enterprise banking software. Linguistics and computational linguistics by training. Based in Poland.</p>
-  <div class="stats">
-    <div class="stat"><b>18 years</b><span>in banking software documentation</span></div>
-    <div class="stat"><b>6</b><span>technical writers in my team</span></div>
-    <div class="stat"><b>3</b><span>case studies with methods and numbers</span></div>
+  <div>
+    <h1>Documentation that people and AI can rely on</h1>
+    <p>Banks that use the same software get one set of documentation. Shared text is written once; each bank's differences live in a separate layer.</p>
+    <p>The same source builds the website, the PDF and the help inside the app, and an AI assistant answers from it. When the assistant can't answer a real user question, that shows what the documentation is missing.</p>
+    <p class="who">Ina Arechowska, documentation architect and DocOps engineer in enterprise banking software. Linguistics and computational linguistics by training. Based in Poland.</p>
+  </div>
+  <div class="cycle" role="img" aria-label="One source with shared text and bank layers builds a website, PDF, in-app help and an AI assistant; real user questions reveal gaps, which go back into the source">
+    <svg viewBox="0 10 440 290" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13">
+      <defs>
+        <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+      </defs>
+      <g fill="var(--tint)">
+        <rect x="20" y="20" width="170" height="120" rx="4"/>
+      </g>
+      <g fill="var(--text)">
+        <text x="36" y="48" font-weight="600" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15">One source</text>
+      </g>
+      <g fill="var(--muted)">
+        <text x="36" y="76">shared text</text>
+        <text x="36" y="98">+ bank A layer</text>
+        <text x="36" y="120">+ bank B layer</text>
+      </g>
+      <g stroke="var(--accent)" stroke-width="1.5" fill="none" marker-end="url(#a)">
+        <path d="M190 60 C 240 60, 250 40, 280 40"/>
+        <path d="M190 78 C 240 78, 250 82, 280 82"/>
+        <path d="M190 96 C 240 96, 250 124, 280 124"/>
+        <path d="M190 114 C 240 114, 250 166, 280 166"/>
+      </g>
+      <g fill="var(--text)">
+        <text x="290" y="44">website</text>
+        <text x="290" y="86">PDF</text>
+        <text x="290" y="128">in-app help</text>
+        <text x="290" y="170" font-weight="600" fill="var(--accent)">AI assistant</text>
+      </g>
+      <g stroke="var(--accent)" stroke-width="1.5" fill="none" marker-end="url(#a)">
+        <path d="M335 182 L335 236"/>
+        <path d="M296 270 L200 270"/>
+        <path d="M105 252 L105 150" stroke-dasharray="4 4"/>
+      </g>
+      <g fill="var(--text)">
+        <text x="302" y="264">real user</text>
+        <text x="302" y="282">questions</text>
+        <text x="64" y="275">gaps found</text>
+      </g>
+      <g fill="var(--faint)">
+        <text x="113" y="206">fixed in</text>
+        <text x="113" y="222">the source</text>
+      </g>
+    </svg>
   </div>
 </header>
+</div>
 
-<section id="work">
-  <h2>What I work on</h2>
-  <div class="grid two">
-    <div class="card"><h3>Documentation architecture</h3><p>Shared content and client layers, explicit applicability per client, in-app help.</p></div>
-    <div class="card"><h3>Docs-as-code transition</h3><p>From Word/CHM to Markdown and Zensical, Sphinx (MyST), AsciiDoc/Antora — with CI checks, site and PDF.</p></div>
-    <div class="card"><h3>AI for documentation</h3><p>RAG assistants over product documentation, evaluation on real user questions, machine translation with glossaries.</p></div>
-    <div class="card"><h3>Team and process</h3><p>Kanban with flow metrics, relative estimation for technical writers, onboarding.</p></div>
+<section class="band" id="how"><div class="wrap">
+  <h2>How it works</h2>
+  <p class="intro">Four parts. Each one solves a problem on its own, and together they close the loop.</p>
+  <div class="steps">
+    <div class="step"><h3><i>1</i>One source instead of copies</h3><p>Each bank used to get its own copy, and every change was repeated in every copy. Now shared text is written once; each bank's differences live in a layer that says where they apply.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
+    <div class="step"><h3><i>2</i>Everything is built from it</h3><p>The website, the PDF and the help that opens from the application screen come from the same source, with automatic checks instead of manual review.</p><a class="proof" href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale →</a></div>
+    <div class="step"><h3><i>3</i>AI answers from the same source</h3><p>An assistant answers users in their own language, with a link to the section it used, and only from their bank's documents.</p><a class="proof" href="https://arechowska.github.io/ai-help-case/">AI Help →</a></div>
+    <div class="step"><h3><i>4</i>Real questions show what is missing</h3><p>We test the assistant on real support tickets, not on questions we wrote ourselves. Where it fails, the documentation has a gap, and the fix goes back into the source.</p><a class="proof" href="https://arechowska.github.io/ai-help-case/">AI Help →</a></div>
   </div>
-</section>
+</div></section>
 
-<section id="cases">
+<section id="cases"><div class="wrap">
   <h2>Case studies</h2>
-  <div class="grid three cards">
-    <a class="card" href="https://arechowska.github.io/ai-help-case/"><span class="tag">AI · MVP</span><h3>AI Help</h3><p>RAG assistant over product documentation in a low-resource language — and how we measured it on real support tickets.</p><p class="result">≈70% full answers on the first try, ≈80% after one clarification</p></a>
-    <a class="card" href="https://arechowska.github.io/docs-as-code-case/"><span class="tag">Architecture · Pilot</span><h3>Docs-as-Code at scale</h3><p>One versioned source for a large multi-client documentation base: layers, CI, site + PDF, in-app help.</p><p class="result">Three stacks compared on real documentation</p></a>
-    <a class="card" href="https://arechowska.github.io/formatta/"><span class="tag">Product · MVP</span><h3>Formatta</h3><p>Assembling, checking and exporting structured documents from your own sources — AI only where meaning is needed.</p><p class="result">Python, FastAPI, local LLMs · code private</p></a>
-  </div>
-  <p class="more">Also: <a href="https://github.com/arechowska/ib-docs-zensical">IB Docs — Zensical</a>, an internet banking documentation MVP with auto-deploy and white-label support.</p>
-</section>
+  <p class="intro">Where each part was built and tested.</p>
 
-<section id="writing">
+  <article class="case">
+    <div>
+      <h3><a href="https://arechowska.github.io/docs-as-code-case/">Docs-as-Code at scale</a></h3>
+      <div class="stack">Markdown, Zensical, Sphinx, Antora</div>
+      <div class="shows">Parts 1 and 2</div>
+    </div>
+    <dl>
+      <dt>Problem</dt><dd>Many banks, many Word copies; every change repeated in each.</dd>
+      <dt>Did</dt><dd>One source with shared text and bank layers; site, PDF and in-app help from it.</dd>
+      <dt>Result</dt><dd class="res">Pilot approved; first rollout planned.</dd>
+      <dd class="go"><a href="https://arechowska.github.io/docs-as-code-case/">Read the case →</a></dd>
+    </dl>
+  </article>
+
+  <article class="case">
+    <div>
+      <h3><a href="https://arechowska.github.io/ai-help-case/">AI Help</a></h3>
+      <div class="stack">RAG, LLM evaluation</div>
+      <div class="shows">Parts 3 and 4</div>
+    </div>
+    <dl>
+      <dt>Problem</dt><dd>Users who speak a low-resource language can't find answers and go to support.</dd>
+      <dt>Did</dt><dd>Test method and evaluation runs on real support tickets; glossary and translation.</dd>
+      <dt>Result</dt><dd class="res">About 70% full answers on the first try, 80% after one follow-up.</dd>
+      <dd class="go"><a href="https://arechowska.github.io/ai-help-case/">Read the case →</a></dd>
+    </dl>
+  </article>
+
+  <article class="case">
+    <div>
+      <h3><a href="https://arechowska.github.io/formatta/">Formatta</a></h3>
+      <div class="stack">Python, FastAPI, local LLMs</div>
+      <div class="shows">Side project</div>
+    </div>
+    <dl>
+      <dt>Problem</dt><dd>Structured documents are put together by hand and checked by eye.</dd>
+      <dt>Did</dt><dd>A tool that builds documents from templates and your sources, then checks them.</dd>
+      <dt>Result</dt><dd class="res">Working MVP; code is private.</dd>
+      <dd class="go"><a href="https://arechowska.github.io/formatta/">Read the case →</a></dd>
+    </dl>
+  </article>
+</div></section>
+
+<section class="band" id="writing"><div class="wrap">
   <h2>Writing</h2>
-  <div class="placeholder">First article coming soon: how we tested an AI documentation assistant on real user questions. <a href="/writing/">All writing</a></div>
-</section>
+  <p class="intro">Research notes from this work.</p>
+  <ul class="list">
+    <li class="soon"><span class="when">soon</span><span class="t">Our questions vs real ones</span><span class="d">What happened when we tested an AI documentation assistant on real support tickets.</span></li>
+  </ul>
+  <p class="more"><a href="/writing/">All notes →</a></p>
+</div></section>
 
-<section id="tools">
+<section id="tools"><div class="wrap">
   <h2>Tools</h2>
-  <div class="grid two cards">
-    <a class="card" href="https://github.com/arechowska/docs-toolkit"><h3>Docs Toolkit</h3><p>Markdown linter and autofixer, pre-commit hook, VS Code snippets, screenshot renaming and automation.</p></a>
-    <a class="card" href="https://github.com/arechowska/zensical-to-pdf"><h3>Zensical to PDF</h3><p>PDF export for Zensical and MkDocs documentation — cover, table of contents, admonitions, CI-ready.</p></a>
-  </div>
-</section>
+  <p class="intro">Open-source pieces of the pipeline.</p>
+  <ul class="list">
+    <li><a class="t" href="https://github.com/arechowska/docs-toolkit">docs-toolkit</a><span class="d">Markdown checks, a pre-commit hook and screenshot automation.</span></li>
+    <li><a class="t" href="https://github.com/arechowska/zensical-to-pdf">zensical-to-pdf</a><span class="d">PDF export for Zensical and MkDocs sites.</span></li>
+    <li><a class="t" href="https://github.com/arechowska/ib-docs-zensical">ib-docs-zensical</a><span class="d">A documentation site for an internet banking product.</span></li>
+  </ul>
+</div></section>
 
-<section id="contact">
+<section class="band" id="contact"><div class="wrap">
   <h2>Contact</h2>
-  <div class="contact">
-    <a href="https://www.linkedin.com/in/arechowska/">LinkedIn</a>
-    <a href="https://github.com/arechowska">GitHub</a>
-    <a href="mailto:arechowska@gmail.com">arechowska@gmail.com</a>
-  </div>
-</section>
+  <p class="contact"><a href="https://www.linkedin.com/in/arechowska/">LinkedIn</a><a href="https://github.com/arechowska">GitHub</a><a href="mailto:arechowska@gmail.com">arechowska@gmail.com</a></p>
+</div></section>
 
-<footer>© 2026 Ina Arechowska. All rights reserved.</footer>
-
-</main>
+<footer><div class="wrap">© 2026 Ina Arechowska</div></footer>
 </body>
 </html>
